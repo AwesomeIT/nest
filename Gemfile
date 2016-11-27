@@ -46,3 +46,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bootstrap-table-rails"
+gem "bootstrap-slider-rails"
+gem "font-awesome-rails"
