@@ -1,0 +1,65 @@
+// Place all the styles related to the samples controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sample-rate {
+	width: 40vw;
+	margin-left: 30vw;
+	margin-top: 100px;
+	border-style: dashed;
+	border-radius: 25px;
+	border-color: #0577BA;
+	padding-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.fa{
+		margin-top: 5vw;	
+		font-size: 8vw;
+		color: #87CAF2;
+	}
+
+	h1 {
+		color: #0577BA;
+	}
+
+	.slider {
+		display: block;
+		margin-top: 50px;
+	}
+
+}
+
+.slider-handle.custom {
+	background-size: 50px 40px !important; 
+	background-image: url("http://clipartoons.com/wp-content/uploads/2015/12/large-nerdy-owl-png.png") !important;
+	padding-bottom: 10px;
+	background-position-x: -5px !important;
+    background-repeat: no-repeat !important;
+}
+
+.slider-handle.custom::before {
+	color: transparent !important;
+}
+
+.slider-tick.custom::before {
+	content: '\25EF' !important;
+	color: transparent !important;
+} 
+
+.slider-tick {
+	border-radius: 10px;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.slider-handle {
+	width: 50px !important;
+	height: 40px !important;
+	top: -10px !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
