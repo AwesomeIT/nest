@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -45,6 +45,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "bootstrap-table-rails"
-gem "bootstrap-slider-rails"
-gem "font-awesome-rails"
+gem 'bootstrap-table-rails'
+gem 'bootstrap-slider-rails'
+gem 'font-awesome-rails'
+gem 'pry', '0.10.4'
+gem 'pry-rails', '0.3.4'
+
+gem 'httparty', '0.14.0'
+gem 'rest_client', '1.8.3'
+gem 'rubocop', '0.46.0'
