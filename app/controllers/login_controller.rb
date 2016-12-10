@@ -1,5 +1,9 @@
 # frozen_string_literal: true
+require 'json'
+
 class LoginController < ApplicationController
+  skip_before_action :require_login, only: [:authorize, :index, :create] 
+
   def index; end
 
   def create; end
@@ -8,16 +12,16 @@ class LoginController < ApplicationController
     response = Rest::User.authenticate(
       'email' => params[:user], 'password' => params[:password]
     )
-    binding.pry
-    message = case response.code
-              when 200
-                'Logged In'
-              when 401
-                'Invalid Credentials'
-              else
-                'API Error. Please try again later.'
-     end
 
-    redirect_to '/login', flash: { alert: message }
+    case response.code
+      when 200
+        response = JSON.parse(response)
+        cookies[:token] = response['token']
+        redirect_to '/home'
+      when 401
+        redirect_to '/login', flash: { alert: 'Invalid Credentials' }
+      else
+        redirect_to '/login', flash: { alert: 'API Error. Please try again later.'}
+     end
   end
 end
