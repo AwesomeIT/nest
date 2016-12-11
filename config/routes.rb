@@ -2,9 +2,10 @@
 Rails.application.routes.draw do
   get 'experiments/index'
   get 'experiments/view'
-
   get 'samples/create'
 
   get 'login', to: 'login#index'
   post 'login', to: 'login#authorize'
+
+  get 'home', to: 'home#index'
 end
