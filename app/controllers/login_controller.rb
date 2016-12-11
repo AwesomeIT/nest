@@ -8,19 +8,25 @@ class LoginController < ApplicationController
   def create; end
 
   def authorize
-    response = Rest::User.authenticate(
+    sessionize(:user_credentials, Rest::User.authenticate(
       'email' => params[:email], 'password' => params[:password]
-    )
+    ))
 
-    case response.code
-      when 200
-        session[:user_credentials] = JSON.parse(response)
-        redirect_to '/home'
-      when 401
-        session.delete(:user_credentials)
-        redirect_to '/login', flash: { error: 'Invalid Credentials' }
-      else
-        redirect_to '/login', flash: { error: 'API Error. Please try again later.'}
-     end
+    sessionize(:user, Rest::User.by_credentials(session[:user_credentials]))
+    redirect_to '/home'
+  end
+
+  private 
+
+  def sessionize(key, request)
+    case request.code
+    when 200
+      session[key] = JSON.parse(request)
+    when 401
+      session.delete(key)
+      redirect_to '/login', flash: { error: 'Invalid Credentials' }
+    else
+      redirect_to '/login', flash: { error: 'API Error. Please try again later.'}
+    end
   end
 end
