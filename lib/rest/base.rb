@@ -6,16 +6,25 @@ module Rest
     BASE_URL = ENV['API_BASE_URL']
 
     def self.headers(access_token = nil)
-      {
-        'Chirp-Api-Key' => ENV['API_KEY'],
+      base_headers = { 'Chirp-Api-Key' => ENV['API_KEY'] }
+
+      base_headers.merge!(
         'Chirp-Access-Token' => access_token
-      }
+      ) if access_token.present?
+
+      base_headers
     end
 
     def self.post(route, params, headers)
       RestClient.post("#{BASE_URL}#{route}",
                       params.to_json,
                       headers.merge('Content-Type' => 'application/json')) { |response| response }
+    end
+
+    def self.get(route, headers)
+      RestClient.get("#{BASE_URL}#{route}",
+        headers
+      )
     end
   end
 end
