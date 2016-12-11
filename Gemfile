@@ -55,3 +55,5 @@ gem 'pry-rails', '0.3.4'
 gem 'httparty', '0.14.0'
 gem 'rest_client', '1.8.3'
 gem 'rubocop', '0.46.0'
+
+gem 'bootstrap_form', '2.5.2'

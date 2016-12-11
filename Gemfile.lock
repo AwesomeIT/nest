@@ -43,6 +43,7 @@ GEM
     bootstrap-slider-rails (9.2.0)
       railties (>= 3.2, < 6.0)
     bootstrap-table-rails (1.11.0)
+    bootstrap_form (2.5.2)
     builder (3.2.2)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -191,6 +192,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-slider-rails
   bootstrap-table-rails
+  bootstrap_form (= 2.5.2)
   byebug
   coffee-rails (~> 4.2)
   dotenv-rails
