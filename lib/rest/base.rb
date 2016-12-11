@@ -25,6 +25,12 @@ module Rest
       RestClient.get("#{BASE_URL}#{route}",
         headers
       )
+
+    def self.put(route, params, headers)
+      RestClient.post("#{BASE_URL}#{route}",
+                      params.to_json,
+                      headers.merge('Content-Type' => 'application/json')) { |response| response }
+
     end
   end
 end

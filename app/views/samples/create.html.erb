@@ -20,13 +20,13 @@
             <td>Tags</td>
             <td><%=f.text_field :tag_list, class: 'form-control' %></td>
         </tr> -->
-        <tr>
+        <!--<tr>
             <td>Expected Score (Optional)</td>
             <td><%=f.number_field :expected_score, in: 0..10, class: 'form-control' %></td>
-        </tr>
+        </tr> -->
         <tr>
             <td>File</td>
-            <td><%= f.file_field :audio %></td>
+            <td><%= f.file_field :file %></td>
         </tr>
     </table>
     <%= f.submit "Save", class: "btn btn-primary btn-block" %>
