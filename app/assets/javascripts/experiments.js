@@ -1,18 +1,8 @@
 $('document').ready(function(){
-	var data = [
-		{
-	    	"name": "Experiment1",
-	    	"id": 1,
-            "samples": 3
-		}
-	];
 	$('#table').bootstrapTable({
-        data: data,
+        data: window.experiments,
         onClickRow: function(row, element, field) {
-        	console.log(row);
+            window.location = window.location.href + '/' + row.id;
         }
-    });
-    $('#table2').bootstrapTable({
-        data: data
     });
 });
