@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 	private
 
 	def require_login
-		unless cookies[:token]
-			redirect_to '/login', flash: { alert: 'Please log in.' }
+		unless session[:user_credentials]
+			redirect_to '/login', flash: { error: 'Please log in.' }
 		end
 	end
 end
