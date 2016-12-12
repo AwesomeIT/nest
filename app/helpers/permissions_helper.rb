@@ -5,11 +5,14 @@ module PermissionsHelper
   end
 
   def is_administrator?
-  end
-
-  def is_participant?
+    session[:user_credentials]["roleId"] == 1
   end
 
   def is_researcher?
+    session[:user_credentials]["roleId"] == 2
+  end
+
+  def is_participant?
+    session[:user_credentials]["roleId"] == 3
   end
 end
