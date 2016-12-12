@@ -17,20 +17,20 @@ module Rest
 
     def self.post(route, params, headers)
       RestClient.post("#{BASE_URL}#{route}",
-                      params.to_json,
-                      headers.merge('Content-Type' => 'application/json')) { |response| response }
+        params.to_json,
+        headers.merge('Content-Type' => 'application/json')) { |response| response }
     end
 
     def self.get(route, headers)
       RestClient.get("#{BASE_URL}#{route}",
         headers
       )
+    end
 
-    def self.put(route, params, headers)
-      RestClient.post("#{BASE_URL}#{route}",
-                      params.to_json,
-                      headers.merge('Content-Type' => 'application/json')) { |response| response }
-
+    def self.put(route, body, headers)
+      RestClient.put("#{BASE_URL}#{route}",
+        body,
+        headers) { |response| response }
     end
   end
 end
