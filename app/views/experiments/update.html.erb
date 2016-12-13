@@ -1,0 +1,9 @@
+<script type="text/javascript">
+  window.experiment = <%= raw @experiment.to_json %>;
+  window.samples = <%= raw @samples.to_json %>;
+</script>
+
+<div class="page-view">
+	<h1><%= @experiment['name'] %></h1>
+		<%= render 'experiments/update' if is_researcher? %>
+</div>
