@@ -8,5 +8,12 @@ module Rest
   			headers(user_credentials['token']).merge('params' => params, 'Content-Type' => 'application/octet-stream')
   		)
 		end
+
+  	def self.list(user_credentials)
+    	get(
+        "#{name.demodulize.downcase}",
+        headers(user_credentials['token'])
+      )
+    end
   end
 end

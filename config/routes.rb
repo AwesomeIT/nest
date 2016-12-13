@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'experiments', to: 'experiments#view'
   post 'experiments', to: 'experiments#create'
   get 'experiments/:id', to: 'experiments#update'
+  post 'experiments/samples/:id', to: 'experiments#samples'
 
   get 'samples/create'
   post 'samples/create', to: 'samples#create_post'
