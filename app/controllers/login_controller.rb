@@ -16,6 +16,11 @@ class LoginController < ApplicationController
     redirect_to '/experiments'
   end
 
+  def logout
+    reset_session
+    redirect_to '/login'
+  end
+
   private 
 
   def sessionize(key, request)
