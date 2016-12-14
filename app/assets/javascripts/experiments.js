@@ -10,12 +10,12 @@ $('document').ready(function(){
         data: window.samples
     });
 
-    var selectedSamples = window.samples.map(x => x.id);
+    var selectedSamples = window.samples ? window.samples.map(x => x.id) : [];
 
-    var samples = window.all_samples.map(function(x) {
+    var samples = window.all_samples ? window.all_samples.map(function(x) {
         x.selected = selectedSamples.includes(x.id);
         return x;
-    })
+    }) : [];
 
     $('#update_samples').bootstrapTable({
         data: samples
