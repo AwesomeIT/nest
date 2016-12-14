@@ -37,4 +37,14 @@ $('document').ready(function(){
           }
         });
     })
+
+    $('#delete_button').on('click', function (e) {
+        $.ajax({
+          url: "/experiments/delete/" + window.experiment.id,
+          type: "get",
+          success: function(){
+            window.location = '/experiments/';
+          }
+        });
+    })
 });

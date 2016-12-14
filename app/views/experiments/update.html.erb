@@ -6,6 +6,6 @@
 
 <div class="page-view">
 	<h1><%= @experiment['name'] %></h1>
-		<%= render 'experiments/update' if is_researcher? %>
+	<%= render 'experiments/update' if is_researcher? %>
     <%= render 'samples/rate', :locals => {:samples => @samples.to_json, :experiment => @experiment.to_json} if is_participant? %>
 </div>

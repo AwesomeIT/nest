@@ -30,5 +30,12 @@ module Rest
         headers(user_credentials['token']).merge('Content-Type' => 'application/json')
 			)
 		end
+
+    def self.destroy(id, user_credentials)
+      delete(
+        "#{name.demodulize.downcase}/#{id}",
+        headers(user_credentials['token'])
+      )
+    end
   end
 end

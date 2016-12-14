@@ -32,5 +32,11 @@ module Rest
         body,
         headers) { |response| response }
     end
+
+    def self.delete(route, headers)
+      RestClient.delete("#{BASE_URL}#{route}",
+        headers
+      )
+    end
   end
 end

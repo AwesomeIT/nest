@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'experiments', to: 'experiments#create'
   get 'experiments/:id', to: 'experiments#update'
   post 'experiments/samples/:id', to: 'experiments#samples'
+  get 'experiments/delete/:id', to: 'experiments#delete'
 
   get 'samples/create'
   post 'samples/create', to: 'samples#create_post'

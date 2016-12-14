@@ -36,4 +36,11 @@ class ExperimentsController < ApplicationController
   		{"samples" => params[:sample_ids] ? params[:sample_ids].map(&:to_i) : []}
   	)
   end
+
+  def delete
+    Rest::Experiment.destroy(
+      params[:id],
+      session[:user_credentials]
+    )
+  end
 end
