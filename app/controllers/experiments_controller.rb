@@ -23,7 +23,10 @@ class ExperimentsController < ApplicationController
 
   def update
   	@experiment = JSON.parse(Rest::Experiment.retrieve(params[:id], session[:user_credentials]))
-  	@samples = JSON.parse(Rest::Sample.list(session[:user_credentials]))
+  	@all_samples = JSON.parse(Rest::Sample.list(session[:user_credentials]))
+    @samples = @experiment['samples'].map do |sample|
+      JSON.parse(Rest::Sample.by_id(session[:user_credentials], sample['id']))
+    end
   end
 
   def samples

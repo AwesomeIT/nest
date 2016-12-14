@@ -15,5 +15,12 @@ module Rest
         headers(user_credentials['token'])
       )
     end
+
+    def self.by_id(user_credentials, id)
+      get(
+        "#{name.demodulize.downcase}/#{id}",
+        headers(user_credentials['token'])
+      )
+    end
   end
 end

@@ -1,0 +1,13 @@
+<div class="page">
+	<div class="sample-rate">
+	<h3> <span id="num_samples"><%= @samples.size %></span> Sample(s) Remaining </h3>
+	  <button id="play" class="fa fa-play-circle-o"></button>
+	  <div class="slider">
+	    <input id="rate-slider" data-slider-handle='custom' type="text" data-slider-tooltip="hide"
+	            data-slider-ticks="[0, 100]" data-slider-ticks-snap-bounds="1" 
+	            data-slider-value="49"/>
+	    <%= audio_tag @samples[0]["s3Url"], class: "audio-play", id: 'audio' %>
+	  </div>
+	  <button id="submit_score" class="btn btn-primary btn-block"> Submit Score </button>
+	</div>
+</div>

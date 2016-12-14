@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post 'login', to: 'login#authorize'
 
   get 'home', to: 'home#index'
+
+  post 'score', to: 'scores#create'
 end
