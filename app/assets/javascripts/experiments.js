@@ -10,7 +10,7 @@ $('document').ready(function(){
         data: window.samples
     });
 
-    var selectedSamples = window.samples ? window.samples.map(x => x.id) : [];
+    var selectedSamples = window.samples ? window.samples.map(function(x) { return x.id; }) : [];
 
     var samples = window.all_samples ? window.all_samples.map(function(x) {
         x.selected = selectedSamples.includes(x.id);
@@ -28,7 +28,7 @@ $('document').ready(function(){
           url: "/experiments/samples/" + window.experiment.id,
           type: "post",
           datatype: "json",
-          data: {sample_ids: samples.map(x => x.id) || []},
+          data: {sample_ids: samples.map(function(x) { return x.id; }) || []},
           success: function(data){
             $('#active_samples').bootstrapTable("load", samples);
           },
