@@ -13,7 +13,7 @@ class LoginController < ApplicationController
     ))
 
     sessionize(:user, Rest::User.by_credentials(session[:user_credentials]))
-    redirect_to '/home'
+    redirect_to '/experiments'
   end
 
   private 
