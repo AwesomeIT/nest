@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 class SamplesController < ApplicationController
-  def rate
-    @sample = { name: 'sample1' }
-  end
-
   def create; end
 
   def create_post
@@ -18,7 +14,7 @@ class SamplesController < ApplicationController
     
   	case response.code
   	when 201
-  		redirect_to '/experiments/view'
+  		redirect_to '/experiments'
   	else
   		redirect_to '/samples/create', flash: { error: 'An error occured. Please try again later.'}
   	end

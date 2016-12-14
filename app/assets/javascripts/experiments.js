@@ -2,17 +2,17 @@ $('document').ready(function(){
 	$('#table').bootstrapTable({
         data: window.experiments,
         onClickRow: function(row, element, field) {
-            window.location = window.location.href + row.id;
+            window.location = '/experiments/' + row.id;
         }
     });
 
     $('#active_samples').bootstrapTable({
-        data: window.experiment.samples
+        data: window.samples
     });
 
-    var selectedSamples = window.experiment.samples.map(x => x.id);
+    var selectedSamples = window.samples.map(x => x.id);
 
-    var samples = window.samples.map(function(x) {
+    var samples = window.all_samples.map(function(x) {
         x.selected = selectedSamples.includes(x.id);
         return x;
     })

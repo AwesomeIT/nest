@@ -4,4 +4,7 @@ module Rest
 
   autoload :Base
   autoload :User
+  autoload :Sample
+  autoload :Experiment
+  autoload :Score
 end
