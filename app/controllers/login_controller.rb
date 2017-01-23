@@ -8,11 +8,11 @@ class LoginController < ApplicationController
   def create; end
 
   def authorize
-    sessionize(:user_credentials, Rest::User.authenticate(
+    sessionize(:user_credentials, ::Rest::User.authenticate(
       'email' => params[:email], 'password' => params[:password]
     ))
 
-    sessionize(:user, Rest::User.by_credentials(session[:user_credentials]))
+    sessionize(:user, ::Rest::User.by_credentials(session[:user_credentials]))
     redirect_to '/experiments'
   end
 
