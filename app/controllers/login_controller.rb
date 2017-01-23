@@ -11,10 +11,10 @@ class LoginController < ApplicationController
     creds = sessionize(:user_credentials, ::Rest::User.authenticate(
       'email' => params[:email], 'password' => params[:password]
     ))
-    return redirect_to '/login', flash: creds if creds.is_a?(Hash)
+    return redirect_to '/login', flash: creds unless creds.is_a?(Hash)
 
     user = sessionize(:user, ::Rest::User.by_credentials(session[:user_credentials]))
-    return redirect_to '/login', flash: user if user.is_a?(Hash)
+    return redirect_to '/login', flash: user unless user.is_a?(Hash)
     
     redirect_to '/experiments'
   end
