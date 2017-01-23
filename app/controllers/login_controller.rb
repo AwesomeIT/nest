@@ -8,11 +8,14 @@ class LoginController < ApplicationController
   def create; end
 
   def authorize
-    sessionize(:user_credentials, ::Rest::User.authenticate(
+    creds = sessionize(:user_credentials, ::Rest::User.authenticate(
       'email' => params[:email], 'password' => params[:password]
     ))
+    return redirect_to '/login', flash: creds if creds.is_a?(Hash)
 
-    sessionize(:user, ::Rest::User.by_credentials(session[:user_credentials]))
+    user = sessionize(:user, ::Rest::User.by_credentials(session[:user_credentials]))
+    return redirect_to '/login', flash: user if user.is_a?(Hash)
+    
     redirect_to '/experiments'
   end
 
@@ -24,14 +27,14 @@ class LoginController < ApplicationController
   private 
 
   def sessionize(key, request)
-    case request.code
+    case request.try(:code)
     when 200
       session[key] = JSON.parse(request)
     when 401
       session.delete(key)
-      redirect_to '/login', flash: { error: 'Invalid Credentials' }
+      { error: 'Invalid Credentials' }
     else
-      redirect_to '/login', flash: { error: 'API Error. Please try again later.'}
+      { error: 'API Error. Please try again later.'}
     end
   end
 end
